@@ -1,36 +1,43 @@
 //Author   : Deepansh Dubey.
 //Date     : 17/10/2020.
-//Purpose  : Printing factors of entered number.
+//Purpose  : Printing prime factors of entered number.
 
 
 import java.io.*;
-class factor
+class prime_factor
 {  
-public static void main(String args[])throws IOException
-{
-BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-long a,b,c,i;
-int e;
-System.out.println("\nOUTPUT:");
+	public static void main(String args[])throws IOException
+	{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		long num, i;
+		String cont, factor="";
 
-while(true)
-{    
-    System.out.println("Input a number");
-    a=Long.parseLong(br.readLine());
-    System.out.println("Factors os" +a+ "are:-");
-    for(i=2;i<=a;i++)
-    {
-    for(a=a;a%i==0;a=a/i)
-    {
-    System.out.println(i);
-    }
-    }
-    System.out.println("Press 0 to exit or 1 to continue.");
-    e=Integer.parseInt(br.readLine());
-    if(e==0)
-        break;
-    if(e==1)
-        continue;
-}
-}
+		while(true)
+		{    
+			System.out.println("\nInput a number or 0 to exit:");
+			num=Long.parseLong(br.readLine());
+			if(num==1)
+			{
+				System.out.println("1 = 1");
+				continue;
+			}
+			else if(num==0)
+			{
+				break;
+			}
+			
+			// Factors of numbers greater than 1
+			System.out.print(num+" = ");
+			factor="";
+			for(i=2; i<=num; i++)
+			{
+				while(num%i==0)
+				{
+					factor += " x " + Long.toString(i);
+					num = num / i;
+				}
+			}
+			System.out.println(factor.substring(3));
+		}
+	}
 }
